@@ -1,0 +1,88 @@
+Showing my work for metric to English conversion
+
+Given grams, divide by 125 to get cups (of flour.) cupsFlour
+
+Whole number? f = stop there and report cups. t = continue...
+
+function isNotWholeNumber(number) {
+  return number % 1 !== 0;
+}
+
+So you have a number of cups with decimal places. Want to subtract the whole number from it. Holy carp, there's a built in function for that!
+
+function divideAndTruncate(a, b) {
+  return Math.trunc(a / b);
+}
+
+console.log(divideAndTruncate(10, 3)); // Output: 3
+
+let's call that output truncCupsFlour. 
+
+cupsFlour - truncCupsFlour = remainderFlour
+
+Convert remainderFlour to fraction 
+
+(remainderFlour * 100)/100 fractionRemainderFlour
+
+function multiplyFractions(numerator1, denominator1, 16, 16) {
+  const resultNumerator = numerator1 * 16;
+  const resultDenominator = denominator1 * 16;
+
+  return `${prettyNumerator}/${prettyDenominator}`;
+}
+
+Reduce it.
+
+function reduceFraction(prettyNumerator, prettyDenominator) {
+  function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b); // Recursive function to find the greatest common divisor
+  }
+
+  const divisor = gcd(prettyNumerator, prettyDenominator);
+  return [prettyNumerator / divisor, prettyDenominator / divisor]; // Return reduced fraction as an array
+} 
+
+newNumerator/newDenominator
+
+Is the denominator (index 1 in that array) =<16? 
+T = report as fractionCups.
+F = more math.
+
+
+newDenominator - (% newDenominator/16) is uglyDenominator
+
+newNumerator * uglyDenominator is newerNumerator
+newDenominator * uglyDenominator is newerDenominator
+
+REDUCE IT!
+
+function reduceFraction(newerNumerator, newerDenominator) {
+  function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b); // Recursive function to find the greatest common divisor
+  }
+
+  const divisor = gcd(prettyNumerator, prettyDenominator);
+  return [newerNumerator / divisor, newerDenominator / divisor]; // Return reduced fraction as an array
+}
+
+use math.js with CDN and use the following function to convert the reduced fraction array as a fraction
+
+const math = require('mathjs');
+
+const fractionArray = [1, 2];
+const fractionObject = math.fraction(fractionArray[0], fractionArray[1]); // Creates a fraction object representing 1/2
+
+console.log(math.format(fractionObject)); // Output: "1/2"
+
+
+now take that modulus from before! 
+
+modulus * 125 gets you back to grams! cheatyModulusGrams
+
+cheatyModGrams/7.8 gets you to cheatyModulusTablespoons!
+
+report out: 
+cupsFlour
+fractionCups (unless null)
+longwayaroundFractionCups
+cheatyModulusTablespoons

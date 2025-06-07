@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Hack Machine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- some fancy fonts-->
+    <link href="https://fonts.cdnfonts.com/css/aqua-grotesque" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+    <style> 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Aqua Grotesque', sans-serif;
+        }
+        body, p { 
+            font-family: 'Roboto Slab', serif;
+            font-weight: 100;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Banner -->
+<div class="p-5 text-center bg-image" 
+    style="background-image: url('images/recipemachinehero.png'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 300px;">
+<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+<div class="d-flex justify-content-center align-items-center h-100">
+  <div class="text-white">
+    <h1 class="mb-3">Welcome to the Recipe Hack Machine</h1>
+    <h4 class="mb-3">Ingredient substitutions made easy!</h4>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Recipe Hack Machine Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="registerlogin.html">Register or Log in<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More...
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="readyrecipes.html">Ready to use recipes</a>
+            <a class="dropdown-item" href="hackmachineblog.html">Blog</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="aboutcontact.html">About and Contact</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="container">
+        <div class="row">
+ 
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header"><h2>Convert measurements</h2></div>
+                    <div class="card-body">
+                        <div class="form-floating mb-3">
+                            <form>
+                                <div class="form-check-inline">
+                                    <label for="startEnglish" style="margin-right: 3px">Starting with English</label>
+                                    <input type="radio" class="form-check-input" value="" id="startEnglish">
+                                </div>
+                                <div class="form-check-inline">
+                                    <label for="startMetric" style="margin-right: 3px">Starting with metric</label>
+                                    <input type="radio" class="form-check-input" value="" id="startMetric">
+                                </div>
+                            </form>
+                        </div>
+
+                            <!--hidden startEnglish form-->
+                        <div class="form-floating mb-3">
+                            <form id="englishForm" style="display:none">
+                                <h5>English Measurements Form</h5>
+                                <p>Here we are. For some reason you are from some other English-speaking country and you want to use an 
+                                    American recipe. Probably to make fun of us. Valid. </p>
+
+                                    <p>But this is a bad idea. Converting volumetric measurements to mass only works if you have a separate 
+                                    calculator for each type of ingredient. A set of measuring spoons and cups is cheap. You probably have 
+                                    a set from the pre-war period. They might even have lead in them. Bonus! </p>
+                            </form>
+                        </div>
+                                
+        <!--hidden startMetric form-->
+                        <div class="form-floating mb-3">
+                            <form id="metricForm" style="display: none;">
+                                <h5>Metric Measurements Form</h5>
+                                <h6>One at a time!</h6>
+                                <div class="form-group">
+                                    <label for="flourGrams">Flour Grams</label>
+                                    <input type="number" class="form-control" id="flourGrams" placeholder="e.g. 1240">
+                                </div>
+                                <!-- not enabled yet but I just need to plug different math numbers to the same script 
+                                <div class="form-group">
+                                    <label for="otherdrygrams">Other Dry Grams (salt, sugar, etc.)</label>
+                                    <input type="number" class="form-control" id="otherdrygrams" placeholder="e.g. 1240">
+                                </div>
+                                <div class="form-group">
+                                    <label for="liquidgrams">Liquid Grams</label>
+                                    <input type="number" class="form-control" id="liquidgrams" placeholder="e.g. 1240">
+                                </div>-->
+                                <button type="button" id="convertToEnglish" class="btn btn-primary">Convert from Metric to English</button>
+                            </form>
+                    </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header"><h2>Convert temperatures</h2></div>
+                    <div class="card-body">
+                       <div class="form-group">
+                            <label for="degreesF">Convert Farenheit to Celsius</label>
+                            <input type="number" id="degreesF" placeholder="input degrees in Farenheit">
+                            <label for="degreesC">Convert Celsius to Farenheit</label>
+                            <input type="number" id="degreesC" placeholder="input degrees in Celsius">
+                            <button type="submit" class="btn btn-primary" id="convertTemp">Convert</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header"><h2>Convert baking time</h2></div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="bakeMinutes">How long (in minutes) did the original recipe say to bake?</label>
+                            <input type="number" id="bakeMinutes" placeholder="original cook time in minutes">
+                            <div class="input-group d-flex flex-column">
+                                <div class="form-check-inline">
+                                    <label for="halfBatch" style="margin-right: 3px">Half Batch</label>
+                                    <input type="radio" id="halfBatch">
+                                </div>
+                            </div> 
+                                <div class="form-check-inline">
+                                    <label for="doubleBatch" style="margin-right: 3px">Double Batch</label>
+                                    <input type="radio" id="doubleBatch">
+                                </div>
+                            </div> 
+                            <button type="submit" class="btn btn-primary" id="convertTime">Convert</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main> 
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- this allows me to convert a two element array into a fraction which makes some other things in one of my 
+ converters easier. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+
+
+<!-- script to show or hide measurement conversion forms based on which radio button is selected -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const startEnglish = document.getElementById("startEnglish");
+        const startMetric = document.getElementById("startMetric");
+        const englishForm = document.getElementById("englishForm");
+        const metricForm = document.getElementById("metricForm");
+
+        startEnglish.addEventListener("change", function () {
+            if (startEnglish.checked) {
+                englishForm.style.display = "block"; // check the English button, show this form
+                metricForm.style.display = "none"; // and continue hiding the metric form
+            }
+        });
+        startMetric.addEventListener("change", function () {
+            if (startMetric.checked) {
+                metricForm.style.display = "block"; // if metric button selected, metric form displays as block
+                englishForm.style.display = "none"; // and the english form continues to be hidden
+            }
+        });
+    });
+</script>
+
+<!-- script to do the measurement conversions for the startEnglish form.
+ THIS DOES NOT WORK AND TURNED OUT TO BE A DUMB IDEA ANYWAY. 
+ <script>
+ // it gets the values input by the user in the form
+    document.getElementById("convertToMetric").addEventListener("click", function () {
+        const flourCups = parseFloat(document.getElementById("flourcups").value || 0);
+        const otherDryCups = parseFloat(document.getElementById("otherdrycups").value || 0);
+        const dryTeaspoons = parseFloat(document.getElementById("dryteaspoons").value || 0);
+        const dryTablespoons = parseFloat(document.getElementById("drytablespoons").value || 0);
+        const liquidCups = parseFloat(document.getElementById("liquidcups").value || 0);
+        const liquidTeaspoons = parseFloat(document.getElementById("liquidteaspoons").value || 0);
+        const liquidTablespoons = parseFloat(document.getElementById("liquidtablespoons").value || 0); 
+// now it does the arithmetic to convert them
+        const flourGrams = flourCups * 120; //always an estimate based on type of flour and how well sifted
+        const sugarGrams = otherDryCups * 200; //sugar is denser than flour
+        const dryTeaspoonGrams = dryTeaspoons * 5; 
+        const dryTablespoonGrams = dryTablespoons * 12; 
+        const liquidCupsMilliliters = liquidCups * 237; 
+        const liquidTeaspoonsGrams = liquidTeaspoons * 4;
+        const liquidTablespoonsGrams = liquidTablespoons * 15; 
+
+//display results in a pop-up... want to make it prettier later
+        alert(
+            `Conversions:\n` +
+            `Flour Cups: ${flourGrams.toFixed(2)} grams\n` +
+            `Other Dry Cups: ${sugarGrams.toFixed(2)} grams\n` +
+            `Dry Teaspoons: ${dryTeaspoonsGrams.toFixed(2)} grams\n` +
+            `Dry Tablespoons: ${dryTablespoonsGrams.toFixed(2)} grams\n` + 
+            `Liquid Cups: ${liquidCupsMilliliters.toFixed(2)} milliliters\n` +
+            `Liquid Teaspoons: ${liquidTeaspoonsGrams.toFixed(2)} grams\n` +
+            `Liquid Tablespoons: ${liquidTablespoonsGrams.toFixed(2)} grams\n` 
+        );
+    });
+ </script> -->
+
+<!-- old, discarded script to convert from metric to english 
+<script>
+       document.getElementById("convertToEnglish").addEventListener("click", function () {
+           const flourCups = parseFloat(document.getElementById("flourcups").value || 0);
+           const otherDryCups = parseFloat(document.getElementById("otherdrycups").value || 0);
+           const dryTeaspoons = parseFloat(document.getElementById("dryteaspoons").value || 0);
+           const dryTablespoons = parseFloat(document.getElementById("drytablespoons").value || 0);
+           const liquidCups = parseFloat(document.getElementById("liquidcups").value || 0);
+           const liquidTeaspoons = parseFloat(document.getElementById("liquidteaspoons").value || 0);
+           const liquidTablespoons = parseFloat(document.getElementById("liquidtablespoons").value || 0); 
+   // now it does the arithmetic to convert them
+           const flourGrams = flourCups * 120; //always an estimate based on type of flour and how well sifted
+           const sugarGrams = otherDryCups * 200; //sugar is denser than flour
+           const dryTeaspoonGrams = dryTeaspoons * 5; 
+           const dryTablespoonGrams = dryTablespoons * 12; 
+           const liquidCupsMilliliters = liquidCups * 237; 
+           const liquidTeaspoonsGrams = liquidTeaspoons * 4;
+           const liquidTablespoonsGrams = liquidTablespoons * 15; 
+   
+   //display results in a pop-up... want to make it prettier later
+           alert(
+               `Conversions:\n` +
+               `Flour Cups: ${flourGrams.toFixed(2)} grams\n` +
+               `Other Dry Cups: ${sugarGrams.toFixed(2)} grams\n` +
+               `Dry Teaspoons: ${dryTeaspoonsGrams.toFixed(2)} grams\n` +
+               `Dry Tablespoons: ${dryTablespoonsGrams.toFixed(2)} grams\n` + 
+               `Liquid Cups: ${liquidCupsMilliliters.toFixed(2)} milliliters\n` +
+               `Liquid Teaspoons: ${liquidTeaspoonsGrams.toFixed(2)} grams\n` +
+               `Liquid Tablespoons: ${liquidTablespoonsGrams.toFixed(2)} grams\n` 
+           );
+       });
+    </script>
+   -->
+
+   <!-- new hotness script to convert from metric to English -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("convertToEnglish").addEventListener("click", function () {
+    const gramsInput = parseFloat(document.getElementById("flourGrams").value || 0); //gets the value the user input into the grams field in that form
+        if (gramsInput > 0) {
+            convertGramsToMeasurement(gramsInput); // calls the function
+        } else { 
+            alert("Please enter a valid number of grams.");
+        }
+   })
+      
+    function convertGramsToMeasurement(grams) {
+      const cupsFlour = grams / 125; // Convert grams to cups (for flour)
+      const truncCupsFlour = Math.trunc(cupsFlour); // Get the whole number part of cups
+      const remainderFlour = cupsFlour - truncCupsFlour; // Get the decimal remainder
+
+      let fractionCups = null;
+      let cheatyModulusTablespoons = null;
+
+      // Check if there's a remainder to convert to a fraction
+      if (remainderFlour > 0) {
+        const prettyNumerator = Math.round(remainderFlour * 16); // Convert remainder to numerator
+        const prettyDenominator = 16; // Denominator for fractions of cups
+
+        // Reduce the fraction
+        function gcd(a, b) {
+          return b === 0 ? a : gcd(b, a % b);
+        }
+        const divisor = gcd(prettyNumerator, prettyDenominator);
+        const reducedNumerator = prettyNumerator / divisor;
+        const reducedDenominator = prettyDenominator / divisor;
+
+        // Check if denominator is <= 16
+        if (reducedDenominator <= 16) {
+          fractionCups = `${reducedNumerator}/${reducedDenominator}`;
+        } else {
+          // Handle cases where denominator > 16
+          const uglyDenominator = reducedDenominator - (reducedDenominator % 16);
+          const newerNumerator = reducedNumerator * uglyDenominator;
+          const newerDenominator = reducedDenominator * uglyDenominator;
+
+          const divisor2 = gcd(newerNumerator, newerDenominator);
+          const finalNumerator = newerNumerator / divisor2;
+          const finalDenominator = newerDenominator / divisor2;
+
+          // Convert to fraction using math.js
+          const fractionObject = math.fraction(finalNumerator, finalDenominator);
+          fractionCups = math.format(fractionObject);
+        }
+
+        // Calculate tablespoons from the modulus
+        const cheatyModulusGrams = remainderFlour * 125; // Convert remainder back to grams
+        cheatyModulusTablespoons = cheatyModulusGrams / 7.8; // Convert grams to tablespoons
+      }
+
+      // Report the result
+      alert(
+        `Conversions:\n` +
+        `Cups: ${truncCupsFlour}\n` +
+        (fractionCups ? `Fraction Cups: ${fractionCups}\n` : "") +
+        (cheatyModulusTablespoons ? `Tablespoons: ${cheatyModulusTablespoons.toFixed(2)}\n` : "")
+      );
+    }
+    });
+
+  /*  // Example usage: Replace gramsInput with actual user input
+    const gramsInput = 200; // Replace with dynamic input
+    convertGramsToMeasurement(gramsInput);
+  }); */
+</script>
+
+<!-- script to do the temperature conversions -->
+<script>
+    document.getElementById("convertTemp").addEventListener("click", function () {
+        const degreesC = parseFloat(document.getElementById("degreesC").value || 0);
+        const degreesF = parseFloat(document.getElementById("degreesF").value || 0);
+
+        let calcDegreesF = null;
+        let calcDegreesC = null; 
+        
+        if (degreesC) {
+            calcDegreesF = degreesC * 1.8 + 32; 
+        } else if (degreesF) {
+            calcDegreesC = (degreesF - 32) / 1.8;
+        } else {
+            alert("Please input a temperature.")
+            return; 
+        }
+
+        alert(
+            `Conversions:\n` +
+            (calcDegreesF !== null ? `${calcDegreesF.toFixed(2)} degrees Farenheit\n` : "") +
+            (calcDegreesC !== null ? `${calcDegreesC.toFixed(2)} degrees Celsius\n` : "")
+        );
+    }); 
+</script>
+
+<!-- script to calculate baking time conversion for a different sized batch -->
+ <script>
+    document.getElementById("convertTime").addEventListener("click", function () {
+        const bakeMinutes = parseFloat(document.getElementById("bakeMinutes").value || 0);
+        const halfBatch = document.getElementById("halfBatch").checked;
+        const doubleBatch = document.getElementById("doubleBatch").checked;
+
+        let convertedTime; 
+
+        if (halfBatch) {
+            convertedTime = bakeMinutes * 0.8; 
+            } else if (doubleBatch) {
+                convertedTime = bakeMinutes + 10; 
+            } else {
+                alert("Please specify a batch size.");
+                return;
+            }
+        
+        alert(`Bake for ${convertedTime.toFixed(2)} minutes, and then start checking for doneness every 5 minutes.`);
+    }); 
+ </script>
+</body>
+</html>

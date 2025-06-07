@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Hack Machine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- some fancy fonts-->
+    <link href="https://fonts.cdnfonts.com/css/aqua-grotesque" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+    <style> 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Aqua Grotesque', sans-serif;
+        }
+        body, p { 
+            font-family: 'Roboto Slab', serif;
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+ <!-- Hero Banner -->
+<div class="p-5 text-center bg-image" 
+    style="background-image: url('images/recipemachinehero.png'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 300px;">
+<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+<div class="d-flex justify-content-center align-items-center h-100">
+  <div class="text-white">
+    <h1 class="mb-3">The Recipe Hack Machine</h1>
+    <h4 class="mb-3">Ingredient substitutions made easy!</h4>
+  </div>
+</div>
+</div>
+</div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Recipe Hack Machine Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="registerlogin.html">Register or Log in<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More...
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="readyrecipes.html">Ready to use recipes</a>
+            <a class="dropdown-item" href="hackmachineblog.html">Blog</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="aboutcontact.html">About and Contact</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 p-5">  
+            <main>
+            <h1>About the Recipe Hack Machine</h1>
+                <p>A little over a decade ago, I was forced to eliminate gluten, dairy, soy, corn, and oats from my diet. 
+                    While there were many great recipes and cookbooks out there, it took time and a lot of research to be able to convert
+                    "regular" recipes to work without the ingredients I can't have. I've created the shortcut that I wish I had.
+                    It's hard enough living with food allergies/sensitivities - hopefully this will make it a little easier.
+                </p>
+                <p>
+                    In any reasonable universe, if you couldn't have wheat flour, whatever. Put an equal amount of rice flour in there and call it done. 
+                    In <em>our</em> universe, that results in outcomes that are somewhat less than... food. Wheat, milk, and eggs have chemical properties
+                    that perform critical functions in our baked goods. We can't just replace the original with an equal volume of something that <em>seems</em>
+                    similar. We have to mimic the ways the original ingredient contributed to the whole in terms of staying moist, holding together, and 
+                    having the right texture. Usually that means accounting for changes in the amount of liquid, protein, fat. Sometimes we also add a 
+                    little something to boost the taste or color. It's half math, half art, half wizardry, and nobody should have to figure that kind of 
+                    thing out while they're riding out the symptoms of their last gluten poisoning. So here is the Recipe Hack Machine to reduce the number of
+                    steps between you and some actually good baked goods!
+                </p>
+                <p>
+                Recipe Hack Machine &copy; Sarah Whiting Morehouse, 2025. All rights reserved.
+                </p>
+            </main>
+        </div>
+        <div class="col-md-3 p-5">
+            <sidebar>
+                <h1>Contact</h1>
+                <form method="post" action="#">
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="contactname">Full Name</label>
+                        <input type="text" id="contactname" class="form-control">
+                    </div>    
+                    <!-- Email field - will require validation w/ JS -->
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="contactemail">Email address</label>
+                        <input type="email" id="contactemail" class="form-control" />
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="contactmessage">Your Message</label>
+                        <textarea rows="6" id="contactmessage" class="form-control"></textarea>
+                    </div>
+                    <div data-mdb-input-init class="form-outline">
+                        <button type="button" class="btn btn-primary mt-4">Send</button>
+                    </div>
+      </div>
+                </sidebar>
+        </div>
+    </div>
+</div>
+        
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+We are converting grams. This amount is quantGrams. Here is the math to convert dry grams to teaspoons. This is calcTeaspoons.
+Are there 2.5 or more teaspoons? 
+NO.
+Great, display amount in teaspoons.
+YES. 
+Fine, divide amount in teaspoons by 2.5. This gives us tablespoons. We will call it calcTablespoons.
+Is it 16? 
+YES. 
+Great, hold that thought. This is calcOneCup. Display amount in cups.
+NO. 
+Great. We're going to call this calcFractionCups. Well, is it greater than 16? 
+NO. 
+Divide by 16. The whole number is calcCups.
+Is there a modulus? 
+NO.
+Display calcCups as amount in cups. 
+YES. 
+We will call the modulus calcCupsModulus. 
+Multiply it by 16 to get reCalcTablespoons. 
+We need to round. Math.round(reCalcTablespoons); to get roundedReCalcTablespoons.
+roundedReCalcTablespoons/16 is a fraction we need to reduce. We will use this function by Phrogz on StackOverflow:
+
+function reduce(reCalcTablespoons,16){
+  var gcd = function gcd(a,b){
+    return b ? gcd(b, a%b) : a;
+  };
+  gcd = gcd(numerator,denominator);
+  return [numerator/gcd, denominator/gcd];
+}
+
+We will call the result numeratorCalcTablespoons and denominatorCalcTablespoons. 
+Is denominatorCalcTablespoonsEven? Divide by 2 is there a modulus? 
+YES. 
+Cool, now we have to go to the display section of the code! 
+NO.
+Nobody asked those stupid Europeans to start baking like pretend scientists, but here we are. 
+Go back to roundedReCalcTablespoons. We know it's odd because otherwise we'd have a measuring cup ready for it. 
+So subtract ONE tablespoon. That results in evenedRoundedReCalcTablespoons. 
+Put THAT through Phrogz's function. Call THAT result evenedNumeratorCalcTablespoons over evenedDenominatorReCalcTablespoons. 
+Take some time to hate yourself for sucking at math, as a treat. 
+NOW we have to add 1 to calcTablespoons to get embiggenedCalcTablespoons for the display. Isn't that neat? Go fuck yourself. We still haven't even started with English. 
+
+Now we are going to display calcCups followed by numeratorCalcTablespoons + evenedNumeratorCalcTablespoons over denominatorCalcTablespoons + evenedDenominatorCalcTablespoons (one of each of those is bound to be zero. Or non-existant. Fuck me. Can you add nulls? YES, because apparently JavaScript loves us and converts nulls to zero for those purposes.) Then we are going to display calcTablespoons + embiggenedCalcTablespoons. And we're going to do it in such a way that each number comes out with its correct measurement label. And then we are going to be very brave and start on the English to Metric calculations. 
+
